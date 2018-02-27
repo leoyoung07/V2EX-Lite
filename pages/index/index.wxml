@@ -1,1 +1,18 @@
-<view>Hello, world</view>
+<block wx:for="{{topics.hot}}" wx:key="index">
+  <view class="list__item_wrapper">
+    <view>
+      <image
+        src="{{item.member.avatar_mini}}"
+        mode="center" class="list__avatar_mini list__img_left-top">
+      </image>
+      <view class="list__info_wrapper">
+        <text>{{item.member.username}}</text>
+        <text class="list__text_bold color__text_grey"> • </text>
+        <text class="list__item_node">{{item.node.title}}</text>
+        <text class="list__replies_right">{{item.replies}}</text>
+      </view>
+      <text class="list__item_time color__text_grey">{{item.lastUpdate}}</text>
+    </view>
+    <view class="list__item_title">{{item.title}}</view>
+  </view>
+</block>

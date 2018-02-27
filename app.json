@@ -3,7 +3,7 @@
     "pages/index/index"
   ],
   "window": {
-    "navigationBarTitleText": "V2EX咨询Lite"
+    "navigationBarTitleText": "V2EX Lite"
   },
   "networkTimeout": {
     "request": 10000,

@@ -1,7 +1,17 @@
-//index.js
+const moment = require('../../lib/moment/moment.js');
+const hotTopics = require('../../test/mock/topics/hot');
+for (let i = 0; i < hotTopics.length; i++) {
+  let item = hotTopics[i];
+  item.lastUpdate = moment(item['last_touched'] * 1000).format('YYYY-MM-DD HH:mm:ss');
+  item.member['avatar_mini'] = item.member['avatar_mini'].replace(/\/\//gi, 'https://');
+  item.member['avatar_normal'] = item.member['avatar_normal'].replace(/\/\//gi, 'https://');
+  item.member['avatar_large'] = item.member['avatar_large'].replace(/\/\//gi, 'https://');
+}
 Page({
   data: {
-    text: "This is page data."
+    topics: {
+      hot: hotTopics
+    }
   },
   onLoad: function (options) {
     // Do some initialize when page load.
