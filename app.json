@@ -1,6 +1,7 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/index/index",
+    "pages/topic/topic"
   ],
   "window": {
     "navigationBarTitleText": "V2EX Lite"
@@ -9,5 +10,5 @@
     "request": 10000,
     "downloadFile": 10000
   },
-  "debug": true
+  "debug": false
 }

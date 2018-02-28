@@ -1,20 +1,36 @@
 const moment = require('../../lib/moment/moment.js');
-const hotTopics = require('../../test/mock/topics/hot');
-for (let i = 0; i < hotTopics.length; i++) {
-  let item = hotTopics[i];
-  item.lastUpdate = moment(item['last_touched'] * 1000).format('YYYY-MM-DD HH:mm:ss');
-  item.member['avatar_mini'] = item.member['avatar_mini'].replace(/\/\//gi, 'https://');
-  item.member['avatar_normal'] = item.member['avatar_normal'].replace(/\/\//gi, 'https://');
-  item.member['avatar_large'] = item.member['avatar_large'].replace(/\/\//gi, 'https://');
+
+function getFormatedTopicData (topics) {
+  for (let i = 0; i < topics.length; i++) {
+    let item = topics[i];
+    item.lastUpdate = moment(item['last_touched'] * 1000).format('YYYY-MM-DD HH:mm:ss');
+    item.member['avatar_mini'] = item.member['avatar_mini'].replace(/\/\//gi, 'https://');
+    item.member['avatar_normal'] = item.member['avatar_normal'].replace(/\/\//gi, 'https://');
+    item.member['avatar_large'] = item.member['avatar_large'].replace(/\/\//gi, 'https://');
+  }
+  return topics;
 }
+
 Page({
   data: {
     topics: {
-      hot: hotTopics
+      hot: []
     }
   },
   onLoad: function (options) {
     // Do some initialize when page load.
+    let that = this;
+    wx.request({
+      url: 'https://www.v2ex.com/api/topics/hot.json',
+      success: function (res) {
+        console.log(res.data);
+        that.setData({
+          topics: {
+            hot: getFormatedTopicData(res.data)
+          }
+        });
+      }
+    });
   },
   onReady: function () {
     // Do something when page ready.
@@ -46,12 +62,15 @@ Page({
     console.log(item.text)
   },
   // Event handler.
-  viewTap: function () {
-    this.setData({
-      text: 'Set some data for updating view.'
-    }, function () {
-      // this is setData callback
-    })
+  viewTap: function (e) {
+    let id = e.currentTarget.dataset.id;
+    console.log(id);
+    wx.navigateTo({
+      url: '/pages/topic/topic?id=' + id,
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    });
   },
   customData: {
     hi: 'MINA'

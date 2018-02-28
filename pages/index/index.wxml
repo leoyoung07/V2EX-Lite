@@ -1,5 +1,6 @@
+<!--pages/index/index.wxml-->
 <block wx:for="{{topics.hot}}" wx:key="index">
-  <view class="list__item_wrapper">
+  <view class="list__item_wrapper" bindtap="viewTap" data-id="{{item.id}}">
     <view>
       <image
         src="{{item.member.avatar_mini}}"

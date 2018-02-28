@@ -1,0 +1,16 @@
+<!--pages/topic/topic.wxml-->
+<view>
+  <view>{{topicInfo.title}}</view>
+  <view>{{topicInfo.content}}</view>
+  <view>{{topicInfo.member.username}}</view>
+  <view>===================================</view>
+</view>
+<block wx:for="{{replies}}" wx:key="index">
+  <view class="list__item_wrapper" bindtap="viewTap" data-id="{{item.id}}">
+    <view>{{item.content}}</view>
+    <view>{{item.thanks}}</view>
+    <view>{{item.member.username}}</view>
+  </view>
+  <view>-----------------------------------</view>
+</block>
+
