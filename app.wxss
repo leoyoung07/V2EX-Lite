@@ -1,0 +1,45 @@
+.common__avatar_mini {
+  width: 24px;
+  height: 24px;
+}
+.common__avatar_normal {
+  width: 48px;
+  height: 48px;
+}
+.common__avatar_large {
+  width: 73px;
+  height: 73px;
+}
+
+.common__title_normal {
+  font-size:16px;
+  font-weight: bold;
+}
+
+.common__title_large {
+  font-size:20px;
+  font-weight: bolder;
+}
+
+.common__list-item_wrapper {
+  border-bottom: 1px solid #e2e2e2;
+  margin: 0 10px;
+  padding: 10px 0;
+  font-size:14px;
+}
+.common__list-item_wrapper:last-of-type {
+  border: none;
+}
+
+.common__text_bold {
+  font-weight: bold;
+}
+
+.common__text-color_grey {
+  color: #ccc;
+}
+
+.common__img_left-top {
+  float:left;
+  margin:0 5px 5px 0;
+}
