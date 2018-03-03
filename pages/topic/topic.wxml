@@ -1,16 +1,61 @@
 <!--pages/topic/topic.wxml-->
-<view>
-  <view>{{topicInfo.title}}</view>
-  <view>{{topicInfo.content}}</view>
-  <view>{{topicInfo.member.username}}</view>
-  <view>===================================</view>
+<view style="border-bottom: 2px solid #e2e2e2; padding: 10px;">
+  <view>
+    <image
+      src="{{topicInfo.member.avatar_normal}}"
+      class="common__avatar_normal"
+      style="float: right;margin: 3px;">
+    </image>
+  </view>
+  <view>V2EX > {{topicInfo.node.title}}</view>
+  <view class="common__title_large">{{topicInfo.title}}</view>
+  <view class="common__text-color_grey">
+    {{topicInfo.member.username}} 发布于 {{topicInfo.last_modified}}
+  </view>
+  <view>
+    {{topicInfo.content}}
+  </view>
+  <view
+    class="common__text-color_grey"
+    style="text-align: right">
+    共 {{topicInfo.replies}} 条回复
+  </view>
+  <view
+      class="common__text-color_grey"
+      style="text-align: right">
+    最近回复于 {{topicInfo.last_touched}}
+  </view>
 </view>
 <block wx:for="{{replies}}" wx:key="index">
-  <view class="list__item_wrapper" bindtap="viewTap" data-id="{{item.id}}">
-    <view>{{item.content}}</view>
-    <view>{{item.thanks}}</view>
-    <view>{{item.member.username}}</view>
+  <view
+    class="common__list-item_wrapper"
+    bindtap="viewTap"
+    data-id="{{item.id}}">
+    <view>
+      <image
+        src="{{item.member.avatar_mini}}"
+        class="common__avatar_mini common__img_left-top">
+      </image>
+      <view style="float: left">
+        <text
+          class="common__text_bold">
+          {{item.member.username}}
+        </text>
+        <text
+          class="common__text-color_grey"
+          style="padding: 0 2px;">
+          {{item.last_modified}}
+        </text>
+      </view>
+      <text style="float: right">
+        {{item.thanks}}
+      </text>
+      <view style="clear: both"></view>
+    </view>
+    <view
+      style="word-wrap:break-word;">
+      {{item.content}}
+    </view>
   </view>
-  <view>-----------------------------------</view>
 </block>
 

@@ -1,4 +1,5 @@
 // pages/topic/topic.js
+const formatters = require('../../utils/formatters.js');
 Page({
 
   /**
@@ -31,7 +32,7 @@ Page({
         }
         console.log(data);
         that.setData({
-          topicInfo: data
+          topicInfo: formatters.topicInfoFormatter(data)
         });
       }
     });
@@ -40,7 +41,7 @@ Page({
       success: function (res) {
         console.log(res.data);
         that.setData({
-          replies: res.data
+          replies: formatters.replyListFormatter(res.data)
         });
       }
     });

@@ -1,16 +1,4 @@
-const moment = require('../../lib/moment/moment.js');
-
-function getFormatedTopicData (topics) {
-  for (let i = 0; i < topics.length; i++) {
-    let item = topics[i];
-    item.lastUpdate = moment(item['last_touched'] * 1000).format('YYYY-MM-DD HH:mm:ss');
-    item.member['avatar_mini'] = item.member['avatar_mini'].replace(/\/\//gi, 'https://');
-    item.member['avatar_normal'] = item.member['avatar_normal'].replace(/\/\//gi, 'https://');
-    item.member['avatar_large'] = item.member['avatar_large'].replace(/\/\//gi, 'https://');
-  }
-  return topics;
-}
-
+const formatters = require('../../utils/formatters.js');
 Page({
   data: {
     topics: {
@@ -26,7 +14,7 @@ Page({
         console.log(res.data);
         that.setData({
           topics: {
-            hot: getFormatedTopicData(res.data)
+            hot: formatters.topicListFormatter(res.data)
           }
         });
       }
