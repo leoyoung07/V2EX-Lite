@@ -1,10 +1,9 @@
 <!--pages/topic/topic.wxml-->
-<view style="border-bottom: 2px solid #e2e2e2; padding: 10px;">
+<view class="topic__info_wrapper">
   <view>
     <image
       src="{{topicInfo.member.avatar_normal}}"
-      class="common__avatar_normal"
-      style="float: right;margin: 3px;">
+      class="common__avatar_normal topic__info_avatar">
     </image>
   </view>
   <view>V2EX > {{topicInfo.node.title}}</view>
@@ -16,13 +15,11 @@
     {{topicInfo.content}}
   </view>
   <view
-    class="common__text-color_grey"
-    style="text-align: right">
+    class="common__text-color_grey topic__info_replies">
     共 {{topicInfo.replies}} 条回复
   </view>
   <view
-      class="common__text-color_grey"
-      style="text-align: right">
+      class="common__text-color_grey topic__info_time">
     最近回复于 {{topicInfo.last_touched}}
   </view>
 </view>
@@ -32,28 +29,29 @@
     bindtap="viewTap"
     data-id="{{item.id}}">
     <view>
-      <image
-        src="{{item.member.avatar_mini}}"
-        class="common__avatar_mini common__img_left-top">
-      </image>
-      <view style="float: left">
-        <text
-          class="common__text_bold">
+      <view
+        class="topic__reply_info">
+        <image
+          src="{{item.member.avatar_mini}}"
+          class="common__avatar_mini">
+        </image>
+        <label
+          class="common__text_bold topic__reply_username">
           {{item.member.username}}
-        </text>
-        <text
-          class="common__text-color_grey"
-          style="padding: 0 2px;">
+        </label>
+        <label
+          class="common__text-color_grey topic__reply_time">
           {{item.last_modified}}
-        </text>
+        </label>
       </view>
-      <text style="float: right">
-        {{item.thanks}}
-      </text>
+      <label
+        class="common__text-color_grey topic__reply_thanks">
+        +{{item.thanks}}
+      </label>
       <view style="clear: both"></view>
     </view>
     <view
-      style="word-wrap:break-word;">
+      class="topic__reply_content">
       {{item.content}}
     </view>
   </view>

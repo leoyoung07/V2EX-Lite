@@ -1,1 +1,43 @@
 /* pages/topic/topic.wxss */
+
+.topic__info_wrapper {
+  border-bottom: 2px solid #e2e2e2;
+  padding: 10px;
+}
+
+.topic__info_avatar {
+  float: right;
+  margin: 3px;
+}
+
+.topic__info_replies {
+  text-align: right;
+}
+
+.topic__info_time {
+  text-align: right;
+}
+
+.topic__reply_info {
+  float: left;
+  display: flex;
+  line-height: 24px;
+  margin-bottom: 5px;
+}
+
+.topic__reply_username {
+  padding-left: 5px;
+}
+
+.topic__reply_time {
+  padding-left: 5px;
+}
+
+.topic__reply_thanks {
+  float: right;
+  line-height: 24px;
+}
+
+.topic__reply_content {
+  word-wrap: break-word;
+}

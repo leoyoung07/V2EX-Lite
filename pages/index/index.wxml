@@ -7,12 +7,12 @@
         mode="center" class="common__avatar_mini common__img_left-top">
       </image>
       <view class="list__info_wrapper">
-        <text>{{item.member.username}}</text>
-        <text class="common__text_bold common__text-color_grey"> • </text>
-        <text class="list__item_node">{{item.node.title}}</text>
-        <text class="list__replies_right">{{item.replies}}</text>
+        <label>{{item.member.username}}</label>
+        <label class="common__text_bold common__text-color_grey"> • </label>
+        <label class="list__item_node">{{item.node.title}}</label>
+        <label class="list__replies_right">{{item.replies}}</label>
       </view>
-      <text class="list__item_time common__text-color_grey">{{item.last_touched}}</text>
+      <label class="list__item_time common__text-color_grey">{{item.last_touched}}</label>
     </view>
     <view class="common__title_normal">{{item.title}}</view>
   </view>
