@@ -6,6 +6,23 @@
   "window": {
     "navigationBarTitleText": "V2EX Lite"
   },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "热门",
+        "iconPath": "assets/ic_whatshot_black_48px.png",
+        "selectedIconPath": "assets/ic_whatshot_black_48px_selected.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "最新",
+        "iconPath": "assets/ic_fiber_new_black_48px.png",
+        "selectedIconPath": "assets/ic_fiber_new_black_48px_selected.png"
+      }
+    ],
+    "selectedColor": "#04bc04"
+  },
   "networkTimeout": {
     "request": 10000,
     "downloadFile": 10000

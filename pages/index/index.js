@@ -1,30 +1,19 @@
 const formatters = require('../../utils/formatters.js');
 Page({
   data: {
-    topics: {
-      hot: []
-    }
+    topics: []
   },
   onLoad: function (options) {
     // Do some initialize when page load.
-    let that = this;
-    wx.request({
-      url: 'https://www.v2ex.com/api/topics/hot.json',
-      success: function (res) {
-        console.log(res.data);
-        that.setData({
-          topics: {
-            hot: formatters.topicListFormatter(res.data)
-          }
-        });
-      }
-    });
   },
   onReady: function () {
     // Do something when page ready.
   },
   onShow: function () {
     // Do something when page show.
+    let appInstance = getApp();
+    let topic = appInstance.currentTopic || 'hot';
+    this.fetchTopics(topic);
   },
   onHide: function () {
     // Do something when page hide.
@@ -45,9 +34,13 @@ Page({
     // Do something when page scroll
   },
   onTabItemTap(item) {
-    console.log(item.index)
-    console.log(item.pagePath)
-    console.log(item.text)
+    let appInstance = getApp();
+    if (item.index === 0) {
+      appInstance.currentTopic = 'hot';
+    } else if (item.index === 1) {
+      appInstance.currentTopic = 'latest';
+    }
+    this.fetchTopics(appInstance.currentTopic);
   },
   // Event handler.
   viewTap: function (e) {
@@ -62,5 +55,17 @@ Page({
   },
   customData: {
     hi: 'MINA'
+  },
+  fetchTopics: function (topic) {
+    let that = this;
+    wx.request({
+      url: `https://www.v2ex.com/api/topics/${topic}.json`,
+      success: function (res) {
+        console.log(res.data);
+        that.setData({
+          topics: formatters.topicListFormatter(res.data)
+        });
+      }
+    });
   }
 })

@@ -1,5 +1,5 @@
 <!--pages/index/index.wxml-->
-<block wx:for="{{topics.hot}}" wx:key="index">
+<block wx:for="{{topics}}" wx:key="index">
   <view class="common__list-item_wrapper" bindtap="viewTap" data-id="{{item.id}}">
     <view>
       <image

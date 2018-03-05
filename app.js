@@ -10,5 +10,6 @@ App({
   },
   onError: function (msg) {
     console.log(msg)
-  }
+  },
+  currentTopic: 'hot'
 });
